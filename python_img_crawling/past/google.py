@@ -1,6 +1,6 @@
 import urllib.request #import urllib.request
-from bs4 import BeautifulSoup #pip install BeautifulSoup, (or bs4)
-from selenium import webdriver #pip install selenium
+from bs4 import BeautifulSoup #import BeautifulSoup
+from selenium import webdriver #import webdriver
 from selenium.webdriver.common.keys import Keys #import Keys
 import time #import time; enablues you to use .sleep() while crwaling imges
 
@@ -11,26 +11,18 @@ browser = webdriver.Chrome(binary) #init browser
 #get browser. this will open a new ready-for-searching tab of Chrome browser
 browser.get("https://www.google.com/imghp?hl=en&search?hl=en&q=") 
 
-########################################################
-# elem = browser.find_element_by_name("q") #init elem
-########################################################
-
-# https://stackoverflow.com/questions/72773206/selenium-python-attributeerror-webdriver-object-has-no-attribute-find-el
-elem = browser.find_element("name", "q")
-
-
+elem = browser.find_element_by_name("q") #init elem
 elem.send_keys("golden retriever") #keywords that you wanna use to search
 time.sleep(3)
 elem.submit() #elem.submit()
 
 # for-loop 
-for i in range(1,3):   #change range to get either less or more results. ex) range(1,2), range(1,6) 
-    # find body tag and execute send_keys(Keys.END)
+for i in range(1 ,6):
+    # find body tag and execute send_keys(Keys.END) for i < 10 so 9 times
     # Keys.END is when the END key is executed to be cliecked
-
-    browser.find_element("xpath", '//body').send_keys(Keys.END)    
+    browser.find_element_by_xpath("//body").send_keys(Keys.END)  #smb == when clicking show more result button
     try:
-        browser.find_element_by_id("smb").click()   #smb == when clicking show more result button
+        browser.find_element_by_id("smb").click()
         time.sleep(5)
     except:
         time.sleep(5)
@@ -67,8 +59,6 @@ def fetch_detail_url():
         # @param path; gives download path
         # @param a; gives auto-incrementing numeric file name
         # finally, set .jpg extension to each of the img downloaded.
-
-        # urllib.request.urlretrieve(p, r"PATH_TO_THE_FOLDER_YOU_WANT "+ str(a) + ".EXTENSION" )
         urllib.request.urlretrieve(p, r"C:\Users\HP\Documents\python_project\img/ "+ str(a) + ".jpg" )
         a+=1 #a = a + 1; increment nums
 
@@ -76,6 +66,4 @@ def fetch_detail_url():
 fetch_detail_url() #fetch_detail_url()
 browser.quit() #close the browser
 
-
-# to run the file: type file name on terminal or ctrl + F5
-# ref at https://osh88itopia.tistory.com/86 
+###  Huge thanks to "itopia". ref at https://osh88itopia.tistory.com/86 ###
