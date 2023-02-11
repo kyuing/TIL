@@ -77,5 +77,5 @@ fetch_detail_url() #fetch_detail_url()
 browser.quit() #close the browser
 
 
-# to run the file: type file name on terminal or ctrl + F5
-# ref at https://osh88itopia.tistory.com/86 
+# to run the file, type file name on terminal e.g., py google.py or ctrl + F5
+# selenium script ref at https://osh88itopia.tistory.com/86 
